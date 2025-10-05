@@ -12,5 +12,26 @@ import json
 with open('assignments/assignment02/bank_holidays.json') as f:
     data = json.load(f)
 
-# loaded the entire json file
-print(json.dumps(data, indent=1))
+# finding the bank holidays for just Northern Ireland
+ni_holidays = data['northern-ireland']['events']
+
+# first instruction
+'''
+# print out dates of bank holidays in Northern Ireland
+for event in ni_holidays:
+    print(event["title"], "-", event["date"])'''
+
+# second instruction
+# modify program to print bank holidays unique to Northern Ireland that does not
+# occur in the rest of the UK
+
+# define bank holidays for UK
+uk_holidays = data['england-and-wales']['events'] + data['scotland']['events']
+
+# compare by name
+uk_holidays = {event['title'] for event in uk_holidays}
+
+for event in ni_holidays:
+    if event['title'] not in uk_holidays:
+        print(event["title"], "-", event["date"])
+
