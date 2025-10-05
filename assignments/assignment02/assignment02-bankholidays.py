@@ -29,9 +29,9 @@ for event in ni_holidays:
 uk_holidays = data['england-and-wales']['events'] + data['scotland']['events']
 
 # compare by name
-uk_holidays = {event['title'] for event in uk_holidays}
+uk_events = {(event['title'], event['date']) for event in uk_holidays}
 
 for event in ni_holidays:
-    if event['title'] not in uk_holidays:
+    if (event['title'], event['date']) not in uk_events:
         print(event["title"], "-", event["date"])
 
