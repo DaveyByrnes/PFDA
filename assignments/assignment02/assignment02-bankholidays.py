@@ -12,4 +12,5 @@ import json
 with open('assignments/assignment02/bank_holidays.json') as f:
     data = json.load(f)
 
+# loaded the entire json file
 print(json.dumps(data, indent=1))
